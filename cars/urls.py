@@ -15,4 +15,9 @@ urlpatterns = [
     path('delete_car/<int:id>',Delete_car.as_view(),name="cars/cashop_owner/delete_car"),
     path('book_car/',Book_car.as_view(),name="cars/customer/book_car"),
     path('logout/',Logout.as_view(),name="logout"),
+
+    path('api/checkout-session/<id>/', create_checkout_session, name='api_checkout_session'),
+    path('detail/<id>/', CarDetailView.as_view(), name='detail'),
+    path('success/', PaymentSuccessView.as_view(), name='success'),
+    path('canel/', PaymentFailedView.as_view(), name='cancel'),
 ]

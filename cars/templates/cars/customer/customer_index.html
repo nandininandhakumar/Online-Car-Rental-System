@@ -36,7 +36,9 @@
                       <p class="card-text">Car Model : {{car.car_model}}</p>
                       <p class="card-text">Fuel Type : {{car.fuel_type}}</p>
                       <p class="card-text">Price : $ {{car.price}}</p>
-                      <a href="/book_car/" class="btn btn-primary">Book Now</a>
+                      <!-- <a href="/book_car/" class="btn btn-primary">Book Now</a> -->
+
+                      <a href="{% url 'detail' id=car.id %}" class="btn btn-primary">Book Now</a>
                     </div>
                   </div>         
             {% endfor %}
