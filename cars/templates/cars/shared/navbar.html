@@ -15,7 +15,14 @@
           {% if user.is_authenticated %}
           
           <li style="color: red;">Hello, {{user.first_name}}</li>
-          <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+
+          {% if user.customer.membership == True %}
+          <a class="btn btn-primary ml-lg-3" href="{% url 'settings' %}">Premium</a>
+        {% else %}
+          <a class="btn btn-primary ml-lg-3" href="{% url 'join' %}">subscribe</a>
+        {% endif %}
+        
+          <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link"><b style="color: green;"> Logout</b></a></li>
           {% else %}
           <li class="nav-item"><a href="{% url 'cars/registration/login' %}" class="nav-link">Login</a></li>
           <li class="nav-item"><a href="{% url 'cars/registration/registration' %}" class="nav-link">Register</a></li>

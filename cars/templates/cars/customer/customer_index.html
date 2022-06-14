@@ -19,6 +19,9 @@
     <div class="container">
       <br><br>
         <h1 style="text-align: center;">Welcome Customer</h1>
+
+        <br><br>
+        
         <hr>
         <form action="{% url 'cars/customer/customer_index' %}" method="post">
           
@@ -44,7 +47,24 @@
             {% endfor %}
   
           </div>
-          
+          <br><br>
+          <div>
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+          </div>
+          <br>
+          <ul style="margin-left: 10px;" class="pagination">
+            {% if page_obj.has_previous %}
+            <li><a href="?page=1" class="btn btn-outline-dark">&laquo;  Fisrt &nbsp;&nbsp;</a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-dark">Previous &nbsp;</a></li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-dark">Next &nbsp;</a></li>
+            <li><a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-dark">Last &nbsp;</a></li>
+            {% endif %}
+
+          </ul>
+
         </form>
         
     </div>

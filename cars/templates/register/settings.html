@@ -1,0 +1,100 @@
+
+
+
+{% extends 'cars/shared/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<br><br><br><br><br>
+<div class="container">
+    <b style="color: rgb(16, 82, 53);">Welcome  {{user.first_name}}, Your Premium plan is Active</b>
+    
+</div>
+
+
+{% if user.customer.membership == True %}
+{% if user.customer.cancel_at_period_end == True %}
+
+                Your subscription is canceled<br>
+                
+                <br><br>
+                
+                <br><br><br>
+
+            {% elif user.customer.status == 'active' %}
+            <br><br><br><br>
+                <div class="container">
+                    <a href="{% url 'pausepayment' %}">Pause Subscription</a>
+                </div>
+                <br>
+                <div class="container">
+                    <a href="{% url 'upgrade' %}">Upgrade Subscription</a>
+                </div>
+                <br>
+                
+                <br>
+                
+                <br>
+                <form action="{% url 'settings' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Cancel Subscription?">
+                </form>
+            {% elif user.customer.status == 'pause' %}
+            <br><br><br><br>
+            <div class="container">
+                <a href="{% url 'resumepayment' %}">Resume Subscription</a>
+            </div>
+            <br>
+            <div class="container">
+                <a href="{% url 'upgrade' %}">Upgrade Subscription</a>
+            </div>
+
+
+            <br>
+               
+            
+
+            <br>
+            <form action="{% url 'settings' %}" method="POST" >
+                {% csrf_token %}
+                <input type="submit" value="Delete Subscription?">
+            </form>
+
+
+            {% else %}
+            <br><br><br><br>
+            <div class="container">
+                <a href="{% url 'pausepayment' %}">Pause Subscription</a>
+            </div>
+            <br>
+            <div class="container">
+                <a href="{% url 'resumepayment' %}">Resume Subscription</a>
+            </div>
+            <br>
+            <div class="container">
+                <a href="{% url 'upgrade' %}">Upgrade Subscription</a>
+            </div>
+            
+            <br>
+
+            <br>
+            <form action="{% url 'settings' %}" method="POST" >
+                {% csrf_token %}
+                <input type="submit" value="Cancel Subscription?">
+            </form>
+
+            {% endif %}
+  {% else %}
+    <a href="{% url 'join' %}">Get a membership</a>
+
+<br><br><br>
+    
+
+  {% endif %}
+
+
+
+  
+{% endblock %}

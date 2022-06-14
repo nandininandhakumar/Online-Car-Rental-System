@@ -1,5 +1,5 @@
 
-from re import template
+
 from django.urls import path
 
 from .views import *
@@ -16,8 +16,29 @@ urlpatterns = [
     path('book_car/',Book_car.as_view(),name="cars/customer/book_car"),
     path('logout/',Logout.as_view(),name="logout"),
 
-    path('api/checkout-session/<id>/', create_checkout_session, name='api_checkout_session'),
+    
     path('detail/<id>/', CarDetailView.as_view(), name='detail'),
     path('success/', PaymentSuccessView.as_view(), name='success'),
     path('canel/', PaymentFailedView.as_view(), name='cancel'),
+
+
+    path('auth/settings', settings, name='settings'),
+    path('home_sub', home, name='home_sub'),
+    path('join', join, name='join'),
+    path('checkout', checkout, name='checkout'),
+    path('deletemsg',Deletemsg,name="deletemsg"),
+    path('pausemsg',Pausemsg,name="pausemsg"),
+    path('resumemsg',Resumemsg,name="resumemsg"),
+    path('pausepayment',Pausepayment, name="pausepayment"),
+    path('resumepayment',Resumepayment, name="resumepayment"),
+
+    path('upgrademsg',Upgrademsg,name="upgrademsg"),
+    path('upgrade',Upgrade, name="upgrade"),
+
+    path('downgrade',Downgrade, name="downgrade"),
+
+    path('deletesubscription',Deletesubscription, name="deletesubscription"),
+    path('success_sub', success, name='success_sub'),
+    path('cancel_sub', cancel, name='cancel_sub'),
+    path('updateaccounts', updateaccounts, name='updateaccounts'),
 ]

@@ -1,0 +1,29 @@
+
+{% extends 'cars/shared/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <br><br><br><br><br><br>
+
+  <div class="container">
+    <b style="color: rgb(16, 82, 53);">Welcome  {{user.first_name}}, Your Premium plan is Active</b>
+    <br><br><br><br>
+  
+  <a href="{% url 'cars/customer/customer_index' %}"><button type="button" style="background-color: blue; color: white;">Back to Book Car</button></a><br><br>
+</div>
+  
+</body>
+</html>
+
+{% endblock content %}
